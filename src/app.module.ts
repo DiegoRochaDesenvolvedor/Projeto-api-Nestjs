@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { LibraryController } from './controllers/library/library.controller';
+import { LibraryController } from './library/controllers/library.controller';
 import { AppService } from './app.service';
 
 @Module({

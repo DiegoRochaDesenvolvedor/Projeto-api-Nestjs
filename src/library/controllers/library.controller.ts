@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { ItemService } from './item.service';/////////////
 
 @Controller('library')
 export class LibraryController {
@@ -13,7 +14,8 @@ export class LibraryController {
   }
 
   @Post()
-  create(@Body() createItemDto: any): string {
+  async create(@Body() createItemDto: any): Promise<string> {
+    await this.itemService.create(createItemDto);///////////////////
     return 'Cria um novo item';
   }
 
