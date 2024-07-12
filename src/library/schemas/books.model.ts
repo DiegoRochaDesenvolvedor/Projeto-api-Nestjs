@@ -9,8 +9,8 @@ export class Book extends Document {
   @Prop()
   descricao: string;
 
-  // @Prop()
-  // dataDePublicacao: Date;
+  @Prop()
+  dataDePublicacao: Date;
 
   @Prop({ required: true })
   autorId: string;

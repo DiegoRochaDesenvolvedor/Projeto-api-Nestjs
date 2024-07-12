@@ -6,13 +6,14 @@ import { Book } from '../schemas/books.model';
 export class LibraryController {
   constructor(private readonly bookService: BookService) {}
   @Get()
-  findAll(): string {
-    return 'Retorna todos os itens';
+  findAll(): Promise<Book[]> {
+    return this.bookService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): string {
-    return `Retorna o item com ID ${id}`;
+  async findOne(@Param('id') id: string) {
+    const book = await this.bookService.findOne(id);
+    return book;
   }
 
   @Post()
@@ -21,12 +22,13 @@ export class LibraryController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateItemDto: any): string {
-    return `Atualiza o item com ID ${id}`;
+  update(@Param('id') id: string, @Body() createBookDto: CreateBookDto): Promise<Book> {
+    return this.bookService.update(id, createBookDto);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string): string {
-    return `Deleta o item com ID ${id}`;
+  async delete(@Param('id') id: string): Promise<string> {
+    const book = await this.bookService.delete(id);
+    return book;
   }
 }
