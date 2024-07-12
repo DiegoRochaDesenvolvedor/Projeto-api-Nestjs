@@ -3,20 +3,17 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Book extends Document {
-  @Prop()
-  ID: string;
+  @Prop({ required: true })
+  titulo: string;
 
   @Prop()
-  Titulo: string;
+  descricao: string;
 
-  @Prop()
-  Descricao: string;
+  // @Prop()
+  // dataDePublicacao: Date;
 
-  @Prop({ type: Date })
-  Data_de_publicacao: Date;
-
-  @Prop()
-  AutorID: string;
+  @Prop({ required: true })
+  autorId: string;
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book);

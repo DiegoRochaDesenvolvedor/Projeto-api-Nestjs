@@ -1,8 +1,10 @@
 import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
-// import { ItemService } from './item.service'; /////////////
-
+import { CreateBookDto } from '../interfaces/book.interface';
+import { BookService } from '../services/book.service';
+import { Book } from '../schemas/books.model';
 @Controller('library')
 export class LibraryController {
+  constructor(private readonly bookService: BookService) {}
   @Get()
   findAll(): string {
     return 'Retorna todos os itens';
@@ -14,8 +16,8 @@ export class LibraryController {
   }
 
   @Post()
-  async create(@Body() createItemDto: any): Promise<string> {
-    return 'Cria um novo item';
+  async create(@Body() createBookDto: CreateBookDto): Promise<Book> {
+    return this.bookService.create(createBookDto);
   }
 
   @Put(':id')
