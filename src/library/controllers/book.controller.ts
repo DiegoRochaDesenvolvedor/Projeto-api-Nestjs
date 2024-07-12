@@ -2,7 +2,7 @@ import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common'
 import { CreateBookDto } from '../interfaces/book.interface';
 import { BookService } from '../services/book.service';
 import { Book } from '../schemas/books.model';
-@Controller('library')
+@Controller('book')
 export class LibraryController {
   constructor(private readonly bookService: BookService) {}
   @Get()
