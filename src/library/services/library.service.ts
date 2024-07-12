@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Item } from './item.schema';
+import { Book } from '../schemas/books.schema';
 
 @Injectable()
 export class ItemService {
-  constructor(@InjectModel(Item.name) private itemModel: Model<Item>) {}
+  constructor(@InjectModel(Book.name) private itemModel: Model<Book>) {}
 
-  async create(createItemDto: any): Promise<Item> {
+  async create(createItemDto: any): Promise<Book> {
     const createdItem = new this.itemModel(createItemDto);
     return createdItem.save();
   }
-} 
+}
