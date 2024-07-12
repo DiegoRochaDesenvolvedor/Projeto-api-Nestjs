@@ -18,7 +18,9 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
+    "linebreak-style": 0,
     'indent': ['error', 2],
+    "prettier/prettier": ["error", { "useTabs": false, "tabWidth": 2 }],
     'semi': 'off', // Desativa a regra de ponto e vírgula
     'func-style': ['error', 'expression'],
     'quotes': ['error', 'single'],
