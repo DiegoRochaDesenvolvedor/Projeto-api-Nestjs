@@ -1,10 +1,13 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, UseGuards } from '@nestjs/common';
 import { CreateAuthorDto } from '../interfaces/Author.interface';
 import { AuthorService } from '../services/author.service';
 import { Author } from '../schemas/author.model';
+import { AuthGuard } from '@nestjs/passport';
+
 @Controller('author')
 export class AuthorController {
   constructor(private readonly AuthorService: AuthorService) {}
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   findAll(): Promise<Author[]> {
     return this.AuthorService.findAll();
