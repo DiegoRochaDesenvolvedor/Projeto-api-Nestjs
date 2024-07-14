@@ -18,8 +18,6 @@ export class AuthService {
 
   // Método para validar e gerar um novo token de acesso a partir de um refresh token
   async refreshToken(userId: string): Promise<string> {
-    // Aqui você deve verificar a validade do refresh token
-    // Por exemplo, verificando se está na lista de tokens válidos armazenados no banco de dados
     return this.generateAccessToken(userId);
   }
 }
