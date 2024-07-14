@@ -8,6 +8,8 @@ export class AuthController {
   @Post('refresh')
   async refresh(@Body() body: { userId: string }): Promise<{ accessToken: string }> {
     const accessToken = await this.authService.refreshToken(body.userId);
+    const userId = body.userId;
+    this.authService.create({ accessToken, userId });
     return { accessToken };
   }
 }
